@@ -9,10 +9,12 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService) { 
+    this.dataSource = new MatTableDataSource<User>();
+  }
   
-  source = new MatTableDataSource<User>();
-  columnas: string[] = ['name', 'surname', 'appName'];  // Nombres de las columnas
+  dataSource: MatTableDataSource<User>;
+  columns: string[] = ['fullName', 'appName']; 
   
   ngOnInit() {
     this.getUsers();
@@ -21,7 +23,7 @@ export class TableComponent implements OnInit {
   getUsers(){
     this._userService.getAll().subscribe((data: User[]) => {
       console.log(data);
-      this.source.data = data;
+      this.dataSource.data = data;
     });
   }
 

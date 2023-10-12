@@ -1,0 +1,38 @@
+<form [formGroup]="padelForm">
+    <mat-form-field>
+      <mat-label>Player A1</mat-label>
+      <mat-select formControlName="playerA1">
+        <mat-option *ngFor="let player of players" [value]="player">{{ player }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Player A2</mat-label>
+      <mat-select formControlName="playerA2">
+        <mat-option *ngFor="let player of players" [value]="player">{{ player }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput type="number" formControlName="scoreA" placeholder="Score A" min="0" max="7">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Player B1</mat-label>
+      <mat-select formControlName="playerB1">
+        <mat-option *ngFor="let player of players" [value]="player">{{ player }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Player B2</mat-label>
+      <mat-select formControlName="playerB2">
+        <mat-option *ngFor="let player of players" [value]="player">{{ player }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+  
+    <mat-form-field>
+      <input matInput type="number" formControlName="scoreB" placeholder="Score B" min="0" max="7">
+    </mat-form-field>
+  </form>
