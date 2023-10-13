@@ -34,7 +34,11 @@ import { MatMenuModule } from '@angular/material/menu';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
     HttpClientModule,
     MatListModule,
     MatTableModule,
