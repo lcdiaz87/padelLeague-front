@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-match-form',
@@ -8,10 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class MatchFormComponent implements OnInit {
   padelForm: FormGroup;
-  players: string[] = ['Player 1', 'Player 2', 'Player 3', 'Player 4'];
+  players!: User[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private _userService: UserService) {
     this.padelForm = this.fb.group({
+      date: ['', Validators.required],
+      time: ['', Validators.required],
       playerA1: ['', Validators.required],
       playerA2: ['', Validators.required],
       playerB1: ['', Validators.required],
@@ -22,5 +26,19 @@ export class MatchFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(){
+    this._userService.getAll().subscribe((data: User[]) => {
+      console.log(data);
+      this.players = data;
+    });
+  }
+
+  submitForm() {
+    // Aquí puedes añadir la lógica para enviar el formulario
+    // Por ejemplo, puedes acceder a los valores del formulario usando this.padelForm.value
+    console.log('Formulario enviado:', this.padelForm.value);
   }
 }
