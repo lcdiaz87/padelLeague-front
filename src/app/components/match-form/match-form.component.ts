@@ -34,7 +34,6 @@ export class MatchFormComponent implements OnInit {
 
   getUsers(){
     this._userService.getAll().subscribe((data: User[]) => {
-      console.log(data);
       this.players = data;
     });
   }
@@ -42,7 +41,6 @@ export class MatchFormComponent implements OnInit {
   submitForm() {
     const datetime: Date = new Date(this.padelForm.value.date)
     datetime.setHours(Number(this.padelForm.value.time.split(':')[0]), Number(this.padelForm.value.time.split(':')[1]), 0);
-      console.log(this.padelForm.value);
     const players = [this.padelForm.value.playerA1.id, this.padelForm.value.playerA2.id, this.padelForm.value.playerB1.id, this.padelForm.value.playerB2.id];
     const uniquePlayers = new Set(players);
     if (uniquePlayers.size !== 4) {
@@ -58,9 +56,17 @@ export class MatchFormComponent implements OnInit {
 
     this._matchService.createMatch({...this.padelForm.value, datetime}).subscribe(data => {
       this.toastr.success('Creado!');
+      this.padelForm.reset();
+      this.padelForm.markAllAsTouched();
+      //this.padelForm.get('date')?.setValue(this.getCurrentDate());
     }, error => {
       this.toastr.error(error.error.message);
     });
-    
+  }
+
+  private getCurrentDate(): string {
+    const today = new Date();
+    const formatted: any = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return today.toLocaleDateString('en-US', formatted);
   }
 }

@@ -21,8 +21,6 @@ export class TableComponent implements OnInit {
 
   getUsers(){
     this._userService.getAllWithScore().subscribe((data: UserWithScore[]) => {
-      console.log(data);
-
       this.dataSource.data = data;
     });
   }

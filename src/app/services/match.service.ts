@@ -14,7 +14,6 @@ export class MatchService {
 
   createMatch(matchToCreate: Match): Observable<any> {
     return this.http.post(environment.baseUrl + 'match', matchToCreate).pipe(map((response: any) => {
-      console.log(response);
       const result: Match = {
         id: response.id,
         datetime: response.datetime,
@@ -25,7 +24,6 @@ export class MatchService {
         scoreA: response.scoreA,
         scoreB: response.scoreB,
       };
-      console.log(result);
       return result;
     }),catchError((error: HttpErrorResponse) => {
       return throwError(() => error);
