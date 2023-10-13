@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { MatchService } from 'src/app/services/match.service';
+
 
 @Component({
   selector: 'app-match-form',
   templateUrl: './match-form.component.html',
-  styleUrls: ['./match-form.component.css']
+  styleUrls: ['./match-form.component.css'],
 })
 export class MatchFormComponent implements OnInit {
   padelForm: FormGroup;
   players!: User[];
 
-  constructor(private fb: FormBuilder, private _userService: UserService) {
+  constructor(private fb: FormBuilder, private _userService: UserService, private _matchService: MatchService, private toastr: ToastrService) {
     this.padelForm = this.fb.group({
-      date: ['', Validators.required],
+      date: [new Date().toISOString().substring(0, 10), Validators.required],
       time: ['', Validators.required],
       playerA1: ['', Validators.required],
       playerA2: ['', Validators.required],
@@ -37,8 +40,27 @@ export class MatchFormComponent implements OnInit {
   }
 
   submitForm() {
-    // Aquí puedes añadir la lógica para enviar el formulario
-    // Por ejemplo, puedes acceder a los valores del formulario usando this.padelForm.value
-    console.log('Formulario enviado:', this.padelForm.value);
+    const datetime: Date = new Date(this.padelForm.value.date)
+    datetime.setHours(Number(this.padelForm.value.time.split(':')[0]), Number(this.padelForm.value.time.split(':')[1]), 0);
+      console.log(this.padelForm.value);
+    const players = [this.padelForm.value.playerA1.id, this.padelForm.value.playerA2.id, this.padelForm.value.playerB1.id, this.padelForm.value.playerB2.id];
+    const uniquePlayers = new Set(players);
+    if (uniquePlayers.size !== 4) {
+      this.toastr.error('Hay jugadores repetidos.');
+      return;
+    }
+    
+    // Check the scores are differents and one of them is 6
+    if ((this.padelForm.value.scoreA !== 6 && this.padelForm.value.scoreB !== 6) || this.padelForm.value.scoreA === this.padelForm.value.scoreB) {
+      this.toastr.error('Puntuación del equipo A o B no son válidos.');
+      return;
+    }
+
+    this._matchService.createMatch({...this.padelForm.value, datetime}).subscribe(data => {
+      this.toastr.success('Creado!');
+    }, error => {
+      this.toastr.error(error.error.message);
+    });
+    
   }
 }
