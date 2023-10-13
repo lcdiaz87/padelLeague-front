@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from 'src/app/interfaces/user';
+import { UserWithScore } from 'src/app/interfaces/user-with-score';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,19 +10,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TableComponent implements OnInit {
   constructor(private _userService: UserService) { 
-    this.dataSource = new MatTableDataSource<User>();
+    this.dataSource = new MatTableDataSource<UserWithScore>();
   }
   
-  dataSource: MatTableDataSource<User>;
-  columns: string[] = ['fullName', 'appName']; 
+  dataSource: MatTableDataSource<UserWithScore>;
   
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers(){
-    this._userService.getAll().subscribe((data: User[]) => {
+    this._userService.getAllWithScore().subscribe((data: UserWithScore[]) => {
       console.log(data);
+
       this.dataSource.data = data;
     });
   }
