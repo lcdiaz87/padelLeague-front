@@ -1,0 +1,29 @@
+/* Estilos para el menú */
+nav {
+    background-color: #fff;
+    /* Color de fondo */
+    padding: 10px;
+    /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Sombra */
+}
+
+/* Estilos para los botones en el menú */
+mat-nav-list button {
+    font-size: 16px;
+    /* Tamaño de fuente */
+    margin-right: 10px;
+    /* Espaciado entre botones */
+}
+
+/* Estilos para el botón activo */
+mat-nav-list button.active {
+    background-color: #ffcc00;
+    /* Color de fondo para el botón activo */
+    color: #000;
+    /* Color de texto para el botón activo */
+}
+
+button {
+    margin: 0.5em 0.5em 1em 0.5em;
+}
