@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TableComponent } from './components/table/table.component';
+import { UserTableComponent } from './components/user-table/user-table.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
@@ -21,13 +21,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatchTableComponent } from './components/match-table/match-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
+    UserTableComponent,
     MenuComponent,
     MatchFormComponent,
+    MatchTableComponent,
   ],
   imports: [
     BrowserModule,

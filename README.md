@@ -1,27 +1,49 @@
-# PadelLeagueFront
+# Padel League Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 16.2.6.
 
-## Development server
+## Requisitos previos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Asegúrate de tener instalado [Node.js](https://nodejs.org) y [npm (Node Package Manager)](https://www.npmjs.com/get-npm) en tu sistema.
 
-## Code scaffolding
+## Instalación
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clona este repositorio en tu máquina local:
+
+   ```bash
+   git clone https://github.com/lcdiaz87/padelLeague-front.git
+   ```
+2. Navega al directorio de la aplicación:
+
+   ```bash
+   cd padelLeague-front
+   ```
+3. Instala las dependencias utilizando npm:
+
+    ```bash
+    npm install
+    ```
+  
+## Ejecución
+Ejecuta el servidor de desarrollo con el siguiente comando:
+  ```bash
+  npm run start
+  ```
+Luego, navega a http://localhost:4200/. La aplicación se recargará automáticamente si realizas cambios en los archivos fuente.
 
 ## Build
+Para construir el proyecto, utiliza el siguiente comando:
+  ```bash
+  npm run build
+  ```
+Los artefactos de construcción se almacenarán en el directorio dist/. Usa la bandera --prod para una construcción de producción.
+  ```bash
+  npm run build -- --prod
+  ```
+## Pruebas
+Para ejecutar las pruebas unitarias a través de Karma, utiliza el siguiente comando:
+  ```bash
+  npm run test
+  ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  

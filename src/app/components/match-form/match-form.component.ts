@@ -49,8 +49,8 @@ export class MatchFormComponent implements OnInit {
     }
     
     // Check the scores are differents and one of them is 6
-    if ((this.padelForm.value.scoreA !== 6 && this.padelForm.value.scoreB !== 6) || this.padelForm.value.scoreA === this.padelForm.value.scoreB) {
-      this.toastr.error('Puntuación del equipo A o B no son válidos.');
+    if (this.padelForm.value.scoreA === this.padelForm.value.scoreB) {
+      this.toastr.error('Puntuaciones iguales.');
       return;
     }
 

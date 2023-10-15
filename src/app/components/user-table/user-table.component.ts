@@ -4,11 +4,11 @@ import { UserWithScore } from 'src/app/interfaces/user-with-score';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  selector: 'app-user-table',
+  templateUrl: './user-table.component.html',
+  styleUrls: ['./user-table.component.css']
 })
-export class TableComponent implements OnInit {
+export class UserTableComponent implements OnInit {
   constructor(private _userService: UserService) { 
     this.dataSource = new MatTableDataSource<UserWithScore>();
   }
