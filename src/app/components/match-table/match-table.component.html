@@ -1,1 +1,62 @@
-<p>match-table works!</p>
+<div class="container">
+    <mat-form-field>
+        <mat-label>Filtra por usuario</mat-label>
+        <mat-select [(value)]="filterSelected" (selectionChange)="applyFilter()">
+            <mat-option>Todos</mat-option>
+            <mat-option *ngFor="let player of players" [value]="player.id">{{ player.fullName }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-table">
+
+        <!-- Definición de las columnas -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="datetime">
+            <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.datetime | date: 'medium' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="playerA1">
+            <mat-header-cell *matHeaderCellDef>Jugador A1</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.playerA1.fullName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="playerA2">
+            <mat-header-cell *matHeaderCellDef>Jugador A2</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.playerA2.fullName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="scoreA">
+            <mat-header-cell *matHeaderCellDef>Puntos A</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.scoreA }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="scoreB">
+            <mat-header-cell *matHeaderCellDef>Puntos B</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.scoreB }}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="playerB1">
+            <mat-header-cell *matHeaderCellDef>Jugador B1</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.playerB1.fullName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="playerB2">
+            <mat-header-cell *matHeaderCellDef>Jugador B2</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.playerB2.fullName }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row
+            *matHeaderRowDef="['id', 'datetime', 'playerA1', 'playerA2', 'scoreA', 'scoreB', 'playerB1',  'playerB2']">
+        </mat-header-row>
+        <mat-row
+            *matRowDef="let row; columns: ['id', 'datetime', 'playerA1', 'playerA2', 'scoreA', 'scoreB', 'playerB1',  'playerB2']">
+        </mat-row>
+    </table>
+</div>
