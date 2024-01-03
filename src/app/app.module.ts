@@ -22,6 +22,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatchTableComponent } from './components/match-table/match-table.component';
+import { ThreeMatchesFormComponent } from './components/three-matches-form/three-matches-form.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
     MenuComponent,
     MatchFormComponent,
     MatchTableComponent,
+    ThreeMatchesFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { MatchTableComponent } from './components/match-table/match-table.compon
     MatInputModule,
     MatButtonModule, 
     MatDividerModule, 
+    MatGridListModule,
     MatIconModule,
     MatMenuModule,
   ],

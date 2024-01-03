@@ -1,0 +1,117 @@
+<form [formGroup]="padelForm" class="form-container">
+    <div class="form-group">
+        <mat-form-field class="form-field">
+            <mat-label>Día del partido</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <mat-label>Hora del partido</mat-label>
+            <input matInput type="time" formControlName="time" placeholder="Choose a time">
+        </mat-form-field>
+    </div>
+
+    
+    <div class="form-group">
+        <mat-grid-list cols="4" rows="1" rowHeight="100px">
+            <mat-grid-tile>
+                    <mat-form-field class="form-field">
+                    <mat-label>Jugador A1</mat-label>
+                    <mat-select formControlName="playerA1">
+                        <mat-option *ngFor="let player of players" [value]="player">{{ player.fullName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Jugador A2</mat-label>
+                    <mat-select formControlName="playerA2">
+                        <mat-option *ngFor="let player of players" [value]="player">{{ player.fullName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>        
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Jugador B1</mat-label>
+                    <mat-select formControlName="playerB1">
+                        <mat-option *ngFor="let player of players" [value]="player">{{ player.fullName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Jugador B2</mat-label>
+                    <mat-select formControlName="playerB2">
+                        <mat-option *ngFor="let player of players" [value]="player">{{ player.fullName }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+        
+
+          <mat-grid-list cols="6" rows="1" rowHeight="100px">
+            <mat-grid-tile><span>{{ padelForm.value.playerA1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerA2.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo A</mat-label>
+                    <input matInput type="number" formControlName="scoreA1" placeholder="Score A" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo B</mat-label>
+                    <input matInput type="number" formControlName="scoreB1" placeholder="Score B" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB2.fullName }}</span></mat-grid-tile>
+
+
+            <mat-grid-tile><span>{{ padelForm.value.playerA1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo A</mat-label>
+                    <input matInput type="number" formControlName="scoreA2" placeholder="Score A" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo B</mat-label>
+                    <input matInput type="number" formControlName="scoreB2" placeholder="Score B" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerA2.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB2.fullName }}</span></mat-grid-tile>
+
+
+            <mat-grid-tile><span>{{ padelForm.value.playerA1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB2.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo A</mat-label>
+                    <input matInput type="number" formControlName="scoreA3" placeholder="Score A" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="form-field">
+                    <mat-label>Puntuación equipo B</mat-label>
+                    <input matInput type="number" formControlName="scoreB3" placeholder="Score B" min="0" max="7">
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerB1.fullName }}</span></mat-grid-tile>
+            <mat-grid-tile><span>{{ padelForm.value.playerA2.fullName }}</span></mat-grid-tile>
+          </mat-grid-list>        
+    </div>
+    <div>
+        <button mat-raised-button color="primary" (click)="submitForm()">Enviar</button>
+        <button mat-raised-button (click)="resetForm()">Resetear</button>
+    </div>
+    <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+</form>

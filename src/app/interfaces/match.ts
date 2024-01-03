@@ -1,7 +1,7 @@
 import { User } from "./user";
 
 export interface Match {
-    id: number;
+    id?: number;
     datetime: Date;
     playerA1: User;
     playerA2: User;
