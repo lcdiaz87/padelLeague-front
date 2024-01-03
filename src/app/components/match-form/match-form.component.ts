@@ -38,6 +38,11 @@ export class MatchFormComponent implements OnInit {
     });
   }
 
+  resetForm(){
+    this.padelForm.reset();
+    this.padelForm.markAsUntouched();
+  }
+
   submitForm() {
     const datetime: Date = new Date(this.padelForm.value.date)
     datetime.setHours(Number(this.padelForm.value.time.split(':')[0]), Number(this.padelForm.value.time.split(':')[1]), 0);
@@ -54,19 +59,12 @@ export class MatchFormComponent implements OnInit {
       return;
     }
 
-    this._matchService.createMatch({...this.padelForm.value, datetime}).subscribe(data => {
+    this._matchService.createMatch({...this.padelForm.value, datetime}).subscribe({next: () => {
       this.toastr.success('Creado!');
-      this.padelForm.reset();
-      this.padelForm.markAllAsTouched();
-      //this.padelForm.get('date')?.setValue(this.getCurrentDate());
-    }, error => {
+    }, error: error => {
       this.toastr.error(error.error.message);
-    });
+    }
+  });
   }
 
-  private getCurrentDate(): string {
-    const today = new Date();
-    const formatted: any = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return today.toLocaleDateString('en-US', formatted);
-  }
 }

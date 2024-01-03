@@ -55,8 +55,9 @@
       <input matInput type="number" formControlName="scoreB" placeholder="Score B" min="0" max="7">
     </mat-form-field>
   </div>
-
-  <button mat-raised-button color="primary" (click)="submitForm()">Enviar</button>
-
+  <div>
+    <button mat-raised-button color="primary" (click)="submitForm()">Enviar</button>
+    <button mat-raised-button  (click)="resetForm()">Resetear</button>
+  </div>
   <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 </form>
