@@ -11,6 +11,9 @@ module.exports = {
     ],
     rules: {
       // Agrega tus reglas específicas de ESLint aquí
+
+      // Deshabilitar la regla que prohíbe el uso de 'any'
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   };
   
