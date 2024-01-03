@@ -11,10 +11,10 @@ import { UserWithScore } from '../interfaces/user-with-score';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getAllWithScore(): Observable<any> {
+  getAllWithScore(): Observable<UserWithScore[]> {
     return this.http.get(environment.baseUrl + 'user').pipe(
-      map((users: any) => {
-        let results: UserWithScore[] = [];
+      map((users : any) => {
+        const results: UserWithScore[] = [];
 
         for (const user of users) {
           const result: UserWithScore = this.setScores(user);

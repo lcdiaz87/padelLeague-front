@@ -11,10 +11,10 @@ export class MatchService {
   
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any> {
+  getAll(): Observable<Match[]> {
     return this.http.get(environment.baseUrl + 'match').pipe(
       map((matches: any) => {
-        return matches.map((match: any) => {
+        return matches.map((match: Match) => {
           return {
             id: match.id,
             datetime: new Date(match.datetime),
@@ -30,7 +30,7 @@ export class MatchService {
     );
   }
 
-  createMatch(matchToCreate: Match): Observable<any> {
+  createMatch(matchToCreate: Match): Observable<Match> {
     return this.http.post(environment.baseUrl + 'match', matchToCreate).pipe(map((response: any) => {
       const result: Match = {
         id: response.id,
