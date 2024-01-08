@@ -62,7 +62,8 @@
       *matHeaderRowDef="['ranking', 'score', 'fullName', 'appName',  'rivals', 'totalSets', 'wonSets', 'lostSets', 'wonGames', 'lostGames', 'gameDifference']">
     </mat-header-row>
     <mat-row
-      *matRowDef="let row; columns: ['ranking', 'score', 'fullName', 'appName',  'rivals', 'totalSets', 'wonSets', 'lostSets', 'wonGames', 'lostGames', 'gameDifference']">
+      *matRowDef="let row; columns: ['ranking', 'score', 'fullName', 'appName',  'rivals', 'totalSets', 'wonSets', 'lostSets', 'wonGames', 'lostGames', 'gameDifference']"
+      [ngClass]="{'red-line': row.totalSets < 15}">
     </mat-row>
   </table>
 </div>

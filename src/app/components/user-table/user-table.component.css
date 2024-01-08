@@ -30,3 +30,8 @@ mat-cell {
 .mat-row {
     border-bottom: 1px solid #ccc;
 }
+
+.red-line {
+    background-color: #CD5C5C; 
+    color: #FFF; 
+}
